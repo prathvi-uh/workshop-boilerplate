@@ -427,6 +427,12 @@ main form .file-wrapper > button{
     display: flex;
 }
 
+.field-get-otp button {
+  background-color: #28a745;  /* green */
+  border-color: #28a745;
+  color: #fff;
+}
+
 main .form button:hover {
     background: var(--form-button-background-hover-color);
 }

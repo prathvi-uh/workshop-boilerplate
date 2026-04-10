@@ -1,60 +1,33 @@
-/**
- * Custom cards component
- * Based on: Radio Group
- */
+export default async function decorate(fieldDiv) {
 
-/**
- * Decorates a custom form field component
- * @param {HTMLElement} fieldDiv - The DOM element containing the field wrapper.
- * @param {Object} fieldJson - The form json object for the component.
- * @param {HTMLElement} parentElement - The parent container element of the field.
- * @param {string} formId - The unique identifier of the form.
- * @returns {HTMLElement} Decorated field wrapper.
- */
-export default async function decorate(fieldDiv, fieldJson, parentElement, formId) {
-  const unused = [parentElement, formId];
-  void unused;
-
-  const properties = fieldJson?.properties || {};
-  const enumValues = properties.enum || [];
-  const enumNames = properties.enumNames || enumValues;
-
-  if (!enumValues.length) {
-    fieldDiv.textContent = 'No card options found';
-    return fieldDiv;
-  }
+  const options = [
+    { value: 'item1', label: 'Item 1' },
+    { value: 'item2', label: 'Item 2' }
+  ];
 
   const container = document.createElement('div');
   container.className = 'cards-container';
 
-  enumValues.forEach((value, index) => {
-    const label = document.createElement('label');
-    label.className = 'card';
+  options.forEach((opt) => {
+    const card = document.createElement('label');
+    card.className = 'card';
 
     const input = document.createElement('input');
     input.type = 'radio';
-    input.name = properties.name || fieldJson?.name || 'cards';
-    input.value = value;
-    input.className = 'card-input';
-
-    if (properties.default === value) {
-      input.checked = true;
-      label.classList.add('selected');
-    }
+    input.name = 'cards';
+    input.value = opt.value;
 
     input.addEventListener('change', () => {
-      container.querySelectorAll('.card').forEach((card) => {
-        card.classList.remove('selected');
-      });
-      label.classList.add('selected');
+      container.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
     });
 
     const text = document.createElement('span');
     text.className = 'card-label';
-    text.textContent = enumNames[index] || value;
+    text.textContent = opt.label;
 
-    label.append(input, text);
-    container.append(label);
+    card.append(input, text);
+    container.append(card);
   });
 
   fieldDiv.innerHTML = '';

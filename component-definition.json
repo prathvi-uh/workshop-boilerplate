@@ -735,6 +735,31 @@
               }
             }
           }
+        },
+        {
+          "title": "Titlecomp",
+          "id": "titlecomp",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/fd/components/form/radiobutton/v1/radiobutton",
+                "template": {
+                  "jcr:title": "Titlecomp",
+                  "fieldType": "radio-group",
+                  "enum": [
+                    "0",
+                    "1"
+                  ],
+                  "enumNames": [
+                    "Item 1",
+                    "Item 2"
+                  ],
+                  "orientation": "horizontal",
+                  "fd:viewType": "titlecomp"
+                }
+              }
+            }
+          }
         }
       ]
     }

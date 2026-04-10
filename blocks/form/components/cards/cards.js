@@ -12,48 +12,49 @@
  * @returns {HTMLElement} Decorated field wrapper.
  */
 export default async function decorate(fieldDiv, fieldJson, parentElement, formId) {
-  const unused = [fieldJson, parentElement, formId];
+  const unused = [parentElement, formId];
   void unused;
 
-  const optionLabels = fieldDiv.querySelectorAll('label');
+  const properties = fieldJson?.properties || {};
+  const enumValues = properties.enum || [];
+  const enumNames = properties.enumNames || enumValues;
 
-  if (!optionLabels.length) {
+  if (!enumValues.length) {
+    fieldDiv.textContent = 'No card options found';
     return fieldDiv;
   }
 
   const container = document.createElement('div');
   container.className = 'cards-container';
 
-  optionLabels.forEach((label) => {
-    const input = label.querySelector('input');
+  enumValues.forEach((value, index) => {
+    const label = document.createElement('label');
+    label.className = 'card';
 
-    if (!input) {
-      return;
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = properties.name || fieldJson?.name || 'cards';
+    input.value = value;
+    input.className = 'card-input';
+
+    if (properties.default === value) {
+      input.checked = true;
+      label.classList.add('selected');
     }
 
-    const card = document.createElement('label');
-    card.className = 'card';
-
-    if (input.checked) {
-      card.classList.add('selected');
-    }
-
-    input.classList.add('card-input');
+    input.addEventListener('change', () => {
+      container.querySelectorAll('.card').forEach((card) => {
+        card.classList.remove('selected');
+      });
+      label.classList.add('selected');
+    });
 
     const text = document.createElement('span');
     text.className = 'card-label';
-    text.textContent = label.textContent.trim();
+    text.textContent = enumNames[index] || value;
 
-    card.append(input, text);
-
-    card.addEventListener('click', () => {
-      container.querySelectorAll('.card').forEach((item) => {
-        item.classList.remove('selected');
-      });
-      card.classList.add('selected');
-    });
-
-    container.append(card);
+    label.append(input, text);
+    container.append(label);
   });
 
   fieldDiv.innerHTML = '';

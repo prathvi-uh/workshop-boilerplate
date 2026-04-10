@@ -1,0 +1,58 @@
+/* Container for cards */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+/* Individual card */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fff;
+  position: relative;
+}
+
+/* Hover effect */
+.card:hover {
+  border-color: #007bff;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+}
+
+/* Selected state (for radio-like behavior) */
+.card.selected {
+  border-color: #007bff;
+  background: #f0f7ff;
+}
+
+/* Hidden radio input */
+.card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Card title */
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Card description */
+.card-description {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Optional icon */
+.card-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}/* Cards component styles */
+
+  /* Add your custom styles here */

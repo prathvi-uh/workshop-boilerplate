@@ -55,4 +55,37 @@
   margin-bottom: 10px;
 }/* Cards component styles */
 
-  /* Add your custom styles here */
+/* Container */
+.cards-container {
+  display: flex;
+  flex-direction: column; /* STACK vertically */
+  gap: 12px;
+}
+
+/* Each card */
+.card {
+  display: flex;
+  align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+/* Hide radio button */
+.card input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Hover */
+.card:hover {
+  border-color: #007bff;
+}
+
+/* Selected card */
+.card.selected {
+  border-color: #007bff;
+  background-color: #f0f7ff;
+}

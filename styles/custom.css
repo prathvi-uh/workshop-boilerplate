@@ -1,3 +1,7 @@
-body {
-  background: red;
+.section.form-container {
+  background-color: red !important;
+}
+
+.section.form-container form {
+  background-color: yellow !important;
 }

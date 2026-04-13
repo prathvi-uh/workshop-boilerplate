@@ -427,12 +427,6 @@ main form .file-wrapper > button{
     display: flex;
 }
 
-.field-get-otp button {
-  background-color: #28a745;  /* green */
-  border-color: #28a745;
-  color: #fff;
-}
-
 main .form button:hover {
     background: var(--form-button-background-hover-color);
 }
@@ -797,4 +791,18 @@ main div.form-wrapper {
 /* Expand height for multi-select dropdowns (array types) */
 main .form form select[multiple] {
     height: calc(42px + 50px);
+}
+
+/* css from my end*/
+/* full section background */
+.section.form-container {
+  background-color: #cfe8cf;
+  padding: 40px;
+}
+
+/* form box */
+.section.form-container form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
 }

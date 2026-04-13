@@ -1,4 +1,9 @@
-.my-form-bg form {
-  background-color: lightblue;
+.form-bg {
+  background-color: #cfe8cf;
+}
+
+.form-bg form {
+  background-color: #c6d9f1;
   padding: 20px;
+  border-radius: 8px;
 }

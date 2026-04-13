@@ -266,3 +266,16 @@ header nav .nav-sections ul > li > ul > li {
 header nav .nav-tools {
   grid-area: tools;
 }
+
+/*mine header*/
+.header {
+  background-color: #003a8f; /* HDFC blue */
+  padding: 16px 24px;
+}
+
+.header h1 {
+  color: white;
+  font-size: 24px;
+  margin: 0;
+  font-weight: bold;
+}

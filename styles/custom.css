@@ -1,7 +1,4 @@
-.section.form-container {
-  background-color: red !important;
-}
-
-.section.form-container form {
-  background-color: yellow !important;
+.my-form-bg form {
+  background-color: lightblue;
+  padding: 20px;
 }

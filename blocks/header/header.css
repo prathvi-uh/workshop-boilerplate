@@ -267,16 +267,22 @@ header nav .nav-tools {
   grid-area: tools;
 }
 
-/*mine header*/
+/* mine header */
 .header {
   background: #03164a;
   min-height: 72px;
   padding: 0 48px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
-  margin: 24px 24px 0;
+
+  /* 🔥 FIX START */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  border-radius: 0;
+  /* 🔥 FIX END */
 }
 
 /* left small logo-like box */
@@ -295,10 +301,8 @@ header nav .nav-tools {
   border: 1px solid #ffffff;
   box-sizing: border-box;
   position: relative;
-}
 
-/* small red square in fake logo */
-.header::before {
+  /* red square */
   box-shadow: inset 8px 0 0 #e21b23;
 }
 
@@ -317,7 +321,7 @@ header nav .nav-tools {
   line-height: 1;
 }
 
-/* if any text exists inside header block, hide it */
+/* hide any inner text */
 .header > * {
   display: none;
 }

@@ -25,12 +25,15 @@ footer .footer p {
   background: #03164a;
   color: #fff;
   text-align: center;
-  font-size: 10px;
-  padding: 10px 16px;
-  line-height: 1.4;
+  font-size: 12px;        
+  padding: 24px 16px;   
+  line-height: 1.6;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* show default text if empty */
@@ -42,5 +45,5 @@ footer .footer p {
 .footer * {
   color: #fff;
   margin: 0;
-  font-size: 10px;
+  font-size: 12px;
 }

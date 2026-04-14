@@ -272,20 +272,15 @@ header nav .nav-tools {
   background: #03164a;
   min-height: 72px;
   padding: 0 48px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
-
-  /* 🔥 FIX START */
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   border-radius: 0;
-  /* 🔥 FIX END */
 }
 
-/* left small logo-like box */
 .header::before {
   content: "HDFC BANK";
   display: inline-flex;
@@ -293,17 +288,15 @@ header nav .nav-tools {
   justify-content: center;
   background: #0a2d7c;
   color: #fff;
-  font-size: 11px;
+  font-size: 14px;      
   font-weight: 700;
-  letter-spacing: 0.4px;
-  height: 20px;
-  padding: 0 10px 0 18px;
+  letter-spacing: 0.5px;
+  height: 28px;         
+  padding: 0 14px 0 24px; 
   border: 1px solid #ffffff;
   box-sizing: border-box;
   position: relative;
-
-  /* red square */
-  box-shadow: inset 8px 0 0 #e21b23;
+  box-shadow: inset 10px 0 0 #e21b23; /* slightly bigger */
 }
 
 /* right secure pill */

@@ -269,36 +269,55 @@ header nav .nav-tools {
 
 /*mine header*/
 .header {
-  background-color: #0b1e3f; /* dark navy blue */
-  padding: 14px 24px;
+  background: #03164a;
+  min-height: 72px;
+  padding: 0 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  margin: 24px 24px 0;
 }
 
-/* LEFT: fake HDFC logo box */
+/* left small logo-like box */
 .header::before {
   content: "HDFC BANK";
-  background-color: #003a8f;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  padding: 6px 10px;
-  border-radius: 3px;
-  letter-spacing: 0.5px;
-}
-
-/* RIGHT: secure badge */
-.header::after {
-  content: "100% Secure";
-  background-color: #28a745;
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a2d7c;
+  color: #fff;
   font-size: 11px;
-  padding: 4px 10px;
-  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  height: 20px;
+  padding: 0 10px 0 18px;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  position: relative;
 }
 
-/* optional height */
-.header {
-  height: 60px;
+/* small red square in fake logo */
+.header::before {
+  box-shadow: inset 8px 0 0 #e21b23;
+}
+
+/* right secure pill */
+.header::after {
+  content: "100% SAFE";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #39b56a;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 4px 10px;
+  line-height: 1;
+}
+
+/* if any text exists inside header block, hide it */
+.header > * {
+  display: none;
 }

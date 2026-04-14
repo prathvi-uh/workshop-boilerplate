@@ -269,13 +269,36 @@ header nav .nav-tools {
 
 /*mine header*/
 .header {
-  background-color: #003a8f; /* HDFC blue */
-  padding: 16px 24px;
+  background-color: #0b1e3f; /* dark navy blue */
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.header h1 {
+/* LEFT: fake HDFC logo box */
+.header::before {
+  content: "HDFC BANK";
+  background-color: #003a8f;
   color: white;
-  font-size: 24px;
-  margin: 0;
   font-weight: bold;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+/* RIGHT: secure badge */
+.header::after {
+  content: "100% Secure";
+  background-color: #28a745;
+  color: white;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* optional height */
+.header {
+  height: 60px;
 }

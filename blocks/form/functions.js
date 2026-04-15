@@ -58,7 +58,6 @@ function maskMobileNumber(mobileNumber) {
 
 /* timer function */
 /* global guideBridge */
-/* global guideBridge */
 window.otpTimerInterval = window.otpTimerInterval || null;
 
 function startOtpTimer() {
@@ -69,31 +68,30 @@ function startOtpTimer() {
     return '00:30';
   }
 
-  // clear previous timer
   if (window.otpTimerInterval) {
     clearInterval(window.otpTimerInterval);
     window.otpTimerInterval = null;
   }
 
-  // initial value
   timerField.value = '00:30';
 
-  // countdown
-  window.otpTimerInterval = setInterval(() => {
-    seconds -= 1;
+  setTimeout(() => {
+    window.otpTimerInterval = setInterval(() => {
+      seconds -= 1;
 
-    if (seconds >= 10) {
-      timerField.value = `00:${seconds}`;
-    } else if (seconds >= 0) {
-      timerField.value = `00:0${seconds}`;
-    }
+      if (seconds >= 10) {
+        timerField.value = `00:${seconds}`;
+      } else if (seconds >= 0) {
+        timerField.value = `00:0${seconds}`;
+      }
 
-    if (seconds <= 0) {
-      clearInterval(window.otpTimerInterval);
-      window.otpTimerInterval = null;
-      timerField.value = 'Time expired';
-    }
-  }, 1000);
+      if (seconds <= 0) {
+        clearInterval(window.otpTimerInterval);
+        window.otpTimerInterval = null;
+        timerField.value = 'Time expired';
+      }
+    }, 1000);
+  }, 100);
 
   return '00:30';
 }

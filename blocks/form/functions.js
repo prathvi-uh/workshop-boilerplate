@@ -58,7 +58,6 @@ function maskMobileNumber(mobileNumber) {
 
 /* timer function */
 /* global guideBridge */
-/* global guideBridge */
 window.otpTimerInterval = window.otpTimerInterval || null;
 
 function startOtpTimer() {

@@ -58,11 +58,11 @@ function maskMobileNumber(mobileNumber) {
 
 /* timer function */
 /* global guideBridge */
+/* global guideBridge */
 window.otpTimerInterval = window.otpTimerInterval || null;
 
 function startOtpTimer() {
   const timerField = guideBridge.resolveNode('timer');
-  const validateBtn = guideBridge.resolveNode('validate_otp');
   let seconds = 30;
 
   if (window.otpTimerInterval) {
@@ -70,7 +70,6 @@ function startOtpTimer() {
   }
 
   timerField.value = '00:30';
-  validateBtn.enabled = false;
 
   window.otpTimerInterval = setInterval(() => {
     seconds -= 1;
@@ -83,12 +82,26 @@ function startOtpTimer() {
 
     if (seconds <= 0) {
       clearInterval(window.otpTimerInterval);
+      window.otpTimerInterval = null;
       timerField.value = 'Time expired';
-      validateBtn.enabled = true;
     }
   }, 1000);
+
+  return timerField.value;
+}
+
+function stopOtpTimer() {
+  const timerField = guideBridge.resolveNode('timer');
+
+  if (window.otpTimerInterval) {
+    clearInterval(window.otpTimerInterval);
+    window.otpTimerInterval = null;
+  }
+
+  timerField.value = 'Validated';
+  return timerField.value;
 }
 // eslint-disable-next-line import/prefer-default-export
 export {
-  getFullName, days, submitFormArrayToString, maskMobileNumber, startOtpTimer,
+  getFullName, days, submitFormArrayToString, maskMobileNumber, startOtpTimer, stopOtpTimer,
 };

@@ -56,7 +56,39 @@ function maskMobileNumber(mobileNumber) {
   return ` ${'*'.repeat(5)}${value.substring(5)}`;
 }
 
+/* timer function */
+/* global guideBridge */
+window.otpTimerInterval = window.otpTimerInterval || null;
+
+function startOtpTimer() {
+  const timerField = guideBridge.resolveNode('timer');
+  const validateBtn = guideBridge.resolveNode('validate_otp');
+  let seconds = 30;
+
+  if (window.otpTimerInterval) {
+    clearInterval(window.otpTimerInterval);
+  }
+
+  timerField.value = '00:30';
+  validateBtn.enabled = false;
+
+  window.otpTimerInterval = setInterval(() => {
+    seconds -= 1;
+
+    if (seconds >= 10) {
+      timerField.value = `00:${seconds}`;
+    } else if (seconds >= 0) {
+      timerField.value = `00:0${seconds}`;
+    }
+
+    if (seconds <= 0) {
+      clearInterval(window.otpTimerInterval);
+      timerField.value = 'Time expired';
+      validateBtn.enabled = true;
+    }
+  }, 1000);
+}
 // eslint-disable-next-line import/prefer-default-export
 export {
-  getFullName, days, submitFormArrayToString, maskMobileNumber,
+  getFullName, days, submitFormArrayToString, maskMobileNumber, startOtpTimer,
 };

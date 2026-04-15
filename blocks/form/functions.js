@@ -58,9 +58,11 @@ function maskMobileNumber(mobileNumber) {
 
 /* timer function */
 /* global guideBridge */
-window.otpTimerInterval = window.otpTimerInterval || null;
 
-function startOtpTimer() {
+/**
+* @param {scope} globals - Global scope object
+*/
+function startOtpTimer(globals) {
   const timerField = guideBridge.resolveNode('timer');
   let seconds = 30;
 
@@ -96,7 +98,7 @@ function startOtpTimer() {
   return '00:30';
 }
 
-function stopOtpTimer() {
+function stopOtpTimer(globals) {
   const timerField = guideBridge.resolveNode('timer');
 
   if (window.otpTimerInterval) {

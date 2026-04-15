@@ -61,7 +61,7 @@ function maskMobileNumber(mobileNumber) {
  * @param {scope} globals
  */
 function startOtpTimer(globals) {
-  const timerField = globals.form.Login.timer;
+  const timerField = globals.form.login_otp_panel.timer;
   let seconds = 30;
 
   if (!timerField) {
@@ -107,7 +107,7 @@ function startOtpTimer(globals) {
  * @param {scope} globals
  */
 function stopOtpTimer(globals) {
-  const timerField = globals.form.Login.timer;
+  const timerField = globals.form.login_otp_panel.timer;
 
   if (window.otpTimerInterval) {
     clearInterval(window.otpTimerInterval);
@@ -122,7 +122,6 @@ function stopOtpTimer(globals) {
 
   return 'Validated';
 }
-
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName, days, submitFormArrayToString, maskMobileNumber, startOtpTimer, stopOtpTimer,

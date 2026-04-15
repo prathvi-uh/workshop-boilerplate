@@ -57,50 +57,11 @@ function maskMobileNumber(mobileNumber) {
 }
 
 /* timer function */
-/* global guideBridge */
-window.otpTimerInterval = window.otpTimerInterval || null;
 
 function startOtpTimer() {
-  const timerField = guideBridge.resolveNode('timer');
-  let seconds = 30;
-
-  if (window.otpTimerInterval) {
-    clearInterval(window.otpTimerInterval);
-  }
-
-  timerField.value = '00:30';
-
-  window.otpTimerInterval = setInterval(() => {
-    seconds -= 1;
-
-    if (seconds >= 10) {
-      timerField.value = `00:${seconds}`;
-    } else if (seconds >= 0) {
-      timerField.value = `00:0${seconds}`;
-    }
-
-    if (seconds <= 0) {
-      clearInterval(window.otpTimerInterval);
-      window.otpTimerInterval = null;
-      timerField.value = 'Time expired';
-    }
-  }, 1000);
-
-  return timerField.value;
-}
-
-function stopOtpTimer() {
-  const timerField = guideBridge.resolveNode('timer');
-
-  if (window.otpTimerInterval) {
-    clearInterval(window.otpTimerInterval);
-    window.otpTimerInterval = null;
-  }
-
-  timerField.value = 'Validated';
-  return timerField.value;
+  return '00:30';
 }
 // eslint-disable-next-line import/prefer-default-export
 export {
-  getFullName, days, submitFormArrayToString, maskMobileNumber, startOtpTimer, stopOtpTimer,
+  getFullName, days, submitFormArrayToString, maskMobileNumber, startOtpTimer,
 };

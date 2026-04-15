@@ -57,8 +57,54 @@ function maskMobileNumber(mobileNumber) {
 }
 
 /* timer function */
+/* global guideBridge */
+window.otpTimerInterval = window.otpTimerInterval || null;
 
 function startOtpTimer() {
+  const timerField = guideBridge.resolveNode('timer');
+  let seconds = 30;
+
+  // clear previous timer
+  if (window.otpTimerInterval) {
+    clearInterval(window.otpTimerInterval);
+  }
+
+  // set initial value
+  timerField.value = '00:30';
+
+  // attach click listener to validate button (ONLY ONCE)
+  const validateBtn = document.querySelector('[name="validate_otp"]');
+
+  if (validateBtn && !validateBtn.dataset.timerAttached) {
+    validateBtn.dataset.timerAttached = 'true';
+
+    validateBtn.addEventListener('click', () => {
+      if (window.otpTimerInterval) {
+        clearInterval(window.otpTimerInterval);
+        window.otpTimerInterval = null;
+      }
+
+      timerField.value = 'Validated';
+    });
+  }
+
+  // start countdown
+  window.otpTimerInterval = setInterval(() => {
+    seconds -= 1;
+
+    if (seconds >= 10) {
+      timerField.value = `00:${seconds}`;
+    } else if (seconds >= 0) {
+      timerField.value = `00:0${seconds}`;
+    }
+
+    if (seconds <= 0) {
+      clearInterval(window.otpTimerInterval);
+      window.otpTimerInterval = null;
+      timerField.value = 'Time expired';
+    }
+  }, 1000);
+
   return '00:30';
 }
 // eslint-disable-next-line import/prefer-default-export

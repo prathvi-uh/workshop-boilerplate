@@ -57,13 +57,11 @@ function maskMobileNumber(mobileNumber) {
 }
 
 /* timer function */
-/* global guideBridge */
-
 /**
-* @param {scope} globals - Global scope object
-*/
+ * @param {scope} globals
+ */
 function startOtpTimer(globals) {
-  const timerField = guideBridge.resolveNode('timer');
+  const timerField = globals.form.Login.timer;
   let seconds = 30;
 
   if (!timerField) {
@@ -75,31 +73,41 @@ function startOtpTimer(globals) {
     window.otpTimerInterval = null;
   }
 
-  timerField.value = '00:30';
+  globals.functions.setProperty(timerField, {
+    value: '00:30',
+  });
 
-  setTimeout(() => {
-    window.otpTimerInterval = setInterval(() => {
-      seconds -= 1;
+  window.otpTimerInterval = setInterval(() => {
+    seconds -= 1;
 
-      if (seconds >= 10) {
-        timerField.value = `00:${seconds}`;
-      } else if (seconds >= 0) {
-        timerField.value = `00:0${seconds}`;
-      }
+    if (seconds >= 10) {
+      globals.functions.setProperty(timerField, {
+        value: `00:${seconds}`,
+      });
+    } else if (seconds >= 0) {
+      globals.functions.setProperty(timerField, {
+        value: `00:0${seconds}`,
+      });
+    }
 
-      if (seconds <= 0) {
-        clearInterval(window.otpTimerInterval);
-        window.otpTimerInterval = null;
-        timerField.value = 'Time expired';
-      }
-    }, 1000);
-  }, 100);
+    if (seconds <= 0) {
+      clearInterval(window.otpTimerInterval);
+      window.otpTimerInterval = null;
+
+      globals.functions.setProperty(timerField, {
+        value: 'Time expired',
+      });
+    }
+  }, 1000);
 
   return '00:30';
 }
 
+/**
+ * @param {scope} globals
+ */
 function stopOtpTimer(globals) {
-  const timerField = guideBridge.resolveNode('timer');
+  const timerField = globals.form.Login.timer;
 
   if (window.otpTimerInterval) {
     clearInterval(window.otpTimerInterval);
@@ -107,11 +115,14 @@ function stopOtpTimer(globals) {
   }
 
   if (timerField) {
-    timerField.value = 'Validated';
+    globals.functions.setProperty(timerField, {
+      value: 'Validated',
+    });
   }
 
   return 'Validated';
 }
+
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName, days, submitFormArrayToString, maskMobileNumber, startOtpTimer, stopOtpTimer,

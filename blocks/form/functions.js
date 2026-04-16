@@ -122,7 +122,19 @@ function stopOtpTimer(globals) {
 
   return 'Validated';
 }
+
+/**
+ * @param {scope} globals
+ */
+function debugForm(globals) {
+  window.myForm = globals.form;
+  // eslint-disable-next-line no-console
+  console.log('myForm', window.myForm);
+  return '';
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export {
-  getFullName, days, submitFormArrayToString, maskMobileNumber, startOtpTimer, stopOtpTimer,
+  getFullName, days, submitFormArrayToString, maskMobileNumber, startOtpTimer, stopOtpTimer, 
+  debugForm,
 };

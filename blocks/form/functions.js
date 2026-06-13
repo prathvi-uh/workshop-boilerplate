@@ -135,7 +135,8 @@ function validateCategoryLimit(selectedValues) {
   return values.length <= 3;
 }
 
- * @param {scope} globals
+/** @param {scope} globals
+ *
  */
 function debugForm(globals) {
   window.myForm = globals.form;

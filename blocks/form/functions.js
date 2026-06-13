@@ -123,12 +123,25 @@ function stopOtpTimer(globals) {
   return 'Validated';
 }
 
+function validateCategoryLimit(selectedValues) {
+  let values = [];
+
+  if (Array.isArray(selectedValues)) {
+    values = selectedValues;
+  } else if (selectedValues) {
+    values = [selectedValues];
+  }
+
+  return values.length > 3
+    ? 'Up to 3 categories'
+    : '';
+}
 /**
  * @param {scope} globals
  */
 function debugForm(globals) {
   window.myForm = globals.form;
- //eslint-disable-next-line 
+//eslint-disable-next-line 
   console.log('myForm', window.myForm);
   return '';
 }
@@ -136,5 +149,5 @@ function debugForm(globals) {
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName, days, submitFormArrayToString, maskMobileNumber, startOtpTimer, stopOtpTimer,
-  debugForm,
+  debugForm, validateCategoryLimit,
 };

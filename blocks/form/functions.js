@@ -132,11 +132,9 @@ function validateCategoryLimit(selectedValues) {
     values = [selectedValues];
   }
 
-  return values.length > 3
-    ? 'Up to 3 categories'
-    : '';
+  return values.length <= 3;
 }
-/**
+
  * @param {scope} globals
  */
 function debugForm(globals) {
